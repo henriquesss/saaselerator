@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sasselerator
 
-## Getting Started
+A SaaS idea accelerator that uses AI to help the founder with business planning, getting time to focus on the product.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **AI-Powered Analysis**: Uses GPT-4o to analyze your SaaS idea
+- **Business Model Canvas**: Generates a complete canvas with customer segments, value propositions, revenue streams, and more
+- **MVP Plan**: Creates an actionable plan with tasks, timelines, and phases
+- **Infrastructure Costs**: Suggests cost-effective services with alternatives
+- **Risk Analysis**: Identifies potential problems and mitigation strategies
+- **Hiring Guide**: Recommends professionals to hire and when
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How It Works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Input Your Idea** - Describe your SaaS concept in the text area
+2. **AI Generation** - The app sends your idea to OpenAI's GPT-4o for analysis
+3. **Business Canvas** - Review and edit the generated business model canvas
+4. **MVP Plan** - Explore tasks, costs, potential challenges, and hiring recommendations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 22.11.0 (use nvm with .nvmrc)
+- An OpenAI API key
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/sasselerator.git
+   cd sasselerator
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Create a `.env.local` file in the root directory:
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **UI**: React 19, Tailwind CSS 4
+- **AI**: Vercel AI SDK with OpenAI
+- **Animations**: Framer Motion
+- **Validation**: Zod
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+
+## Demo Mode
+
+Don't have an API key? Click the "Try Demo" button to explore the app with sample data.
+
+## License
+
+MIT
