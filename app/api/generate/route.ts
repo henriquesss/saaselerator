@@ -95,7 +95,7 @@ MVP PLAN:
 INFRASTRUCTURE COSTS:
 - Focus on cost-effective, startup-friendly solutions
 - Always suggest cheaper alternatives (free tiers, open source)
-- Include: hosting, database, auth, monitoring, email, etc.
+- Include: hosting, database, auth, monitoring, email, analytics, etc.
 - Be realistic with pricing
 
 PROBLEMS:
