@@ -16,8 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SaaSselerator — Validate Your SaaS Idea",
-  description: "Transform your SaaS idea into a validated business model and actionable MVP plan",
+  title: "SaaSelerator",
+  description: "Transform your SaaS idea into an actionable plan",
 };
 
 export default function RootLayout({

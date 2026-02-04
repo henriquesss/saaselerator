@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ArrowLeft,
   Clock,
   CheckCircle2,
   Circle,
@@ -24,7 +23,6 @@ import type { MVPPlan as MVPPlanType, Task, InfrastructureCost, Problem, Profess
 interface MVPPlanProps {
   plan: MVPPlanType;
   onUpdate: (plan: MVPPlanType) => void;
-  onBack: () => void;
 }
 
 type Phase = 'planning' | 'development' | 'testing' | 'launch';
@@ -48,7 +46,7 @@ const severityConfig = {
   low: { label: 'Low Risk', color: 'text-green-600 dark:text-green-400', bgColor: 'bg-green-500/10', icon: <Lightbulb className="w-4 h-4" /> },
 };
 
-export function MVPPlan({ plan, onUpdate, onBack }: MVPPlanProps) {
+export function MVPPlan({ plan, onUpdate }: MVPPlanProps) {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['tasks', 'infrastructure', 'problems', 'professionals']));
 
   const toggleSection = (section: string) => {
@@ -80,7 +78,7 @@ export function MVPPlan({ plan, onUpdate, onBack }: MVPPlanProps) {
   }, {} as Record<Phase, Task[]>);
 
   return (
-    <div className="min-h-[100dvh] py-8 px-4">
+    <div className="py-8 px-4">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -88,13 +86,6 @@ export function MVPPlan({ plan, onUpdate, onBack }: MVPPlanProps) {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Canvas
-          </button>
           <h1 className="text-3xl md:text-4xl font-semibold mb-2">MVP Development Plan</h1>
           <p className="text-muted-foreground">{plan.summary}</p>
         </motion.div>

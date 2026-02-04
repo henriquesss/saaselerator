@@ -59,4 +59,4 @@ export interface GeneratedPlan {
   mvpPlan: MVPPlan;
 }
 
-export type Step = 'input' | 'loading' | 'canvas' | 'mvp';
+export type Step = 'input' | 'loading' | 'result';

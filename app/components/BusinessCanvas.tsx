@@ -13,17 +13,13 @@ import {
   Handshake, 
   PiggyBank,
   Pencil,
-  Check,
-  ArrowRight,
-  ArrowLeft
+  Check
 } from 'lucide-react';
 import type { BusinessCanvas as BusinessCanvasType } from '../types';
 
 interface BusinessCanvasProps {
   canvas: BusinessCanvasType;
   onUpdate: (canvas: BusinessCanvasType) => void;
-  onNext: () => void;
-  onBack: () => void;
 }
 
 type CanvasField = keyof BusinessCanvasType;
@@ -40,7 +36,7 @@ const canvasFields: { key: CanvasField; label: string; icon: React.ReactNode; co
   { key: 'revenueStreams', label: 'Revenue Streams', icon: <DollarSign className="w-4 h-4" />, color: 'bg-green-500/10 text-green-600 dark:text-green-400' },
 ];
 
-export function BusinessCanvas({ canvas, onUpdate, onNext, onBack }: BusinessCanvasProps) {
+export function BusinessCanvas({ canvas, onUpdate }: BusinessCanvasProps) {
   const [editingField, setEditingField] = useState<CanvasField | null>(null);
   const [editValue, setEditValue] = useState('');
 
@@ -63,7 +59,7 @@ export function BusinessCanvas({ canvas, onUpdate, onNext, onBack }: BusinessCan
   };
 
   return (
-    <div className="min-h-[100dvh] py-8 px-4">
+    <div className="py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -71,13 +67,6 @@ export function BusinessCanvas({ canvas, onUpdate, onNext, onBack }: BusinessCan
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Start over
-          </button>
           <h1 className="text-3xl md:text-4xl font-semibold mb-2">Business Model Canvas</h1>
           <p className="text-muted-foreground">
             Review and edit your generated business model. Click any section to modify.
@@ -236,21 +225,6 @@ export function BusinessCanvas({ canvas, onUpdate, onNext, onBack }: BusinessCan
           </motion.div>
         </div>
 
-        {/* Action Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex justify-center"
-        >
-          <button
-            onClick={onNext}
-            className="py-4 px-8 rounded-xl bg-accent text-accent-foreground font-medium text-lg flex items-center gap-3 hover:shadow-lg hover:shadow-accent/20 transition-all"
-          >
-            View MVP Plan
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </motion.div>
       </div>
     </div>
   );

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import { IdeaInput } from './components/IdeaInput';
-import { BusinessCanvas } from './components/BusinessCanvas';
-import { MVPPlan } from './components/MVPPlan';
+import { ResultTabs } from './components/ResultTabs';
 import { LoadingState } from './components/LoadingState';
 import { mockPlan } from './mockData';
 import type { GeneratedPlan, BusinessCanvas as BusinessCanvasType, MVPPlan as MVPPlanType, Step } from './types';
@@ -31,7 +30,7 @@ export default function Home() {
 
       const data: GeneratedPlan = await response.json();
       setPlan(data);
-      setStep('canvas');
+      setStep('result');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong');
       setStep('input');
@@ -58,7 +57,7 @@ export default function Home() {
 
   const handleDemo = () => {
     setPlan(mockPlan);
-    setStep('canvas');
+    setStep('result');
   };
 
   return (
@@ -75,20 +74,12 @@ export default function Home() {
 
       {step === 'loading' && <LoadingState />}
 
-      {step === 'canvas' && plan && (
-        <BusinessCanvas
-          canvas={plan.businessCanvas}
-          onUpdate={handleCanvasUpdate}
-          onNext={() => setStep('mvp')}
-          onBack={handleReset}
-        />
-      )}
-
-      {step === 'mvp' && plan && (
-        <MVPPlan
-          plan={plan.mvpPlan}
-          onUpdate={handleMVPUpdate}
-          onBack={() => setStep('canvas')}
+      {step === 'result' && plan && (
+        <ResultTabs
+          plan={plan}
+          onCanvasUpdate={handleCanvasUpdate}
+          onMVPUpdate={handleMVPUpdate}
+          onReset={handleReset}
         />
       )}
     </main>
